@@ -1,0 +1,23 @@
+<!-- src/main/resources/templates/login.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+    <h1 style="text-align: center;">Login</h1>
+    <form style="text-align: center;" action="/login" method="post">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+
+        <button type="submit" style="background-color: #368bf4;color: white;padding: 14px 25px;text-align: center;text-decoration: none;display: inline-block;">Login</button>
+    </form>
+    
+    
+
+    <script src="login.js"></script>
+</body>
+</html>
