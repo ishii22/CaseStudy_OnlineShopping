@@ -1,9 +1,6 @@
 package com.example.javaCaseStudy.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "cart")
@@ -13,6 +10,9 @@ public class Cart {
     private int productId;
     @Column(name="quantity")
     private int quantity;
+    @OneToOne
+    @JoinColumn(name = "prod_id")
+    private Product product;
 
     public Cart() {
     }
@@ -36,5 +36,13 @@ public class Cart {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
     }
 }
