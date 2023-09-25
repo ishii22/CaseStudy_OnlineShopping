@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     loadCartItems();
 });
 
+// Display all cart items
 function loadCartItems() {
     fetch("http://localhost:8090/cart")
         .then(response => response.json())
@@ -30,6 +31,7 @@ function loadCartItems() {
         .catch(error => console.error("Error fetching cart items:", error));
 }
 
+// Increase the quantity of an item
 function increaseQuantity(cartItemId) {
         // Send a request to increase the quantity of the specified item in the cart
         // Update the UI with the new quantity
@@ -51,6 +53,7 @@ function increaseQuantity(cartItemId) {
             .catch(error => console.log('error', error));
 }
 
+// Decrease the quantity of an item
 function decreaseQuantity(cartItemId) {
         // // Send a request to decrease the quantity of the specified item in the cart
         // // Update the UI with the new quantity (ensure it doesn't go below 1)
@@ -95,37 +98,6 @@ function removeProductFromCart(productId){
     // add delete success message
 }
 
-
-
-// block format
-// document.addEventListener("DOMContentLoaded", function () {
-//     const cartItemsContainer = document.getElementById("cart-items");
-
-//     // Fetch cart data from the server
-//     fetch("http://localhost:8090/cart")
-//         .then(response => response.json())
-//         .then(cartItems => {
-//             cartItems.forEach(cartItem => {
-//                 const cartItemDiv = document.createElement("div");
-//                 cartItemDiv.className = "cart-item";
-//                 cartItemDiv.innerHTML = `
-//                     <h2>${cartItem.product.productName}</h2>
-//                     <p>Price: $${cartItem.product.productPrice}</p>
-//                     <p>Quantity: <span id="quantity-${cartItem.productId}">${cartItem.quantity}</span></p>
-//                     <button onclick="increaseQuantity(${cartItem.productId})">+</button>
-//                     <button onclick="decreaseQuantity(${cartItem.productId})">-</button>
-//                     <button onclick="removeFromCart(${cartItem.productId})">Remove</button>
-//                 `;
-//                 cartItemsContainer.appendChild(cartItemDiv);
-//             });
-//         })
-//         .catch(error => console.error("Error fetching cart data:", error));
-// });
-
-
-// function checkout() {
-//     // Implement checkout logic, e.g., navigate to a payment page
-// }
 
 
 
