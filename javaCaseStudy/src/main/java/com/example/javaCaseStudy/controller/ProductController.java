@@ -21,8 +21,16 @@ public class ProductController {
     @GetMapping(produces = "application/json")
     public ResponseEntity<List<Product>> getAllProducts(){
         return new ResponseEntity<List<Product>>(productService.getAllProducts(),HttpStatus.OK);
+    }
+
+
+    @CrossOrigin
+    @GetMapping(value = "/{category}",produces = "application/json")
+    public ResponseEntity<List<Product>> searchProducts(@PathVariable String category){
+        return new ResponseEntity<List<Product>>(productService.getProductByCategory(category),HttpStatus.OK);
 
     }
+
     @ExceptionHandler(RuntimeException.class)
     public HttpStatus productNotFound(){
         return HttpStatus.NOT_FOUND;
