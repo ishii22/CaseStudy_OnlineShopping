@@ -6,10 +6,20 @@
 <!--    <link rel="stylesheet" href="/css/styles.css">-->
  </head>
 <body>
-<h1>Product Listing</h1>
-<div id="product-list"></div>
-<br>
-<a href="userCart.html" target="_blank" style="background-color: #368bf4;color: white;padding: 14px 25px;text-align: center;text-decoration: none;display: inline-block;">Go To Cart</a>
+
+
+    <h1>Product Search</h1>
+    <form id="search-form" onsubmit="searchProducts(event)">
+        <input type="text" id="search-query" name="q" placeholder="Search for products..." required>
+        <button type="submit">Search</button>
+    </form>
+    <div id="search-results"></div>
+
+
+    <h1 id="product-listing">Product Listing</h1>
+    <div id="product-list"></div>
+    <br>
+    <a href="userCart.html" target="_blank" style="background-color: #368bf4;color: white;padding: 14px 25px;text-align: center;text-decoration: none;display: inline-block;">Go To Cart</a>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="product-scripts.js"></script>
 </body>

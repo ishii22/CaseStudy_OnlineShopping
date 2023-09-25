@@ -69,3 +69,58 @@ function removeProductFromCart(productId){
     
     // add delete success message
 }
+
+// -----------------------------------------------------------
+// Search Functionality
+
+function searchProducts(event){
+    event.preventDefault();
+    const searchQueryInput = document.getElementById("search-query");
+    const query = searchQueryInput.value.trim();
+
+    // Send a request to the server to perform the search
+    fetch(`http://localhost:8090/products/${query}`)
+        .then(response => response.json())
+        .then(products => {
+            console.log("searching");
+            console.log(products);
+            displaySearchResults(products);
+            
+        })
+        .catch(error => console.error("Error performing search:", error));
+}
+
+
+
+    function displaySearchResults(products) {
+        const searchResultsDiv = document.getElementById("search-results");
+        const productListing = document.getElementById("product-listing");
+        const productList = document.getElementById("product-list");
+        productListing.remove();
+        productList.remove();
+        searchResultsDiv.innerHTML = "";
+        
+
+        if (products.length === 0) {
+            searchResultsDiv.innerHTML = "<p>No products found.</p>";
+        } else {
+
+
+            // const productList = document.getElementById("product-list");
+            products.forEach(product => {
+                const productDiv = document.createElement("div");
+                productDiv.className = "product";
+                productDiv.innerHTML = `
+                <h2>${product.productName}</h2>
+                <p>Price: $${product.productPrice}</p>
+                <p>Category: ${product.productCategory}</p>
+                <p>Rating: ${product.productRating}</p>
+                <button onclick="addProductToCart(${product.productId})">Add</button>
+                <button onclick="removeProductFromCart(${product.productId})">Remove</button>
+                `;
+                searchResultsDiv.appendChild(productDiv);
+        
+            });
+            
+        }
+    }
